@@ -16,9 +16,9 @@ if (isset($_GET['location'])) {
     
     $flavorOfTheDay = [];
     // the css selector for the name of the flavor of the day
-    $flavorOfTheDay['name'] =  $html->find("div.ModuleRestaurantDetail-fotd h2 strong")[0]->plaintext;
+    $flavorOfTheDay['name'] =  $html->find("/html/body/div[1]/div/div/div/main/section/div[1]/div[2]/div[1]/h2")[0]->plaintext;
     // the css selector for the image, and this case we're getting the URL from the src attribute. In this case it did not include the "https:" so we need to prepend it to the URL
-    $flavorOfTheDay['image']= "https:" . $html->find("div.ModuleRestaurantDetail-fotd img")[0]->src;
+    //$flavorOfTheDay['image']= "https:" . $html->find("div.ModuleRestaurantDetail-fotd img")[0]->src;
     
     // return the data in JSON format
     echo json_encode($flavorOfTheDay);
