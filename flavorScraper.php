@@ -1,8 +1,8 @@
 <?php
-// Function to fetch the flavor of the day using latitude and longitude
-function getFlavorOfTheDay($latitude, $longitude) {
-    // Construct the API URL with the given latitude and longitude
-    $url = "https://www.culvers.com/api/locator/getLocations?lat=$latitude&long=$longitude&limit=1";
+// Function to fetch the flavor of the day using a ZIP code
+function getFlavorOfTheDay($zipcode) {
+    // Construct the API URL with the given ZIP code
+    $url = "https://www.culvers.com/api/locator/getLocations?location=$zipcode&limit=1";
     
     // Initialize cURL to make the request to the API
     $ch = curl_init();
@@ -39,20 +39,19 @@ function getFlavorOfTheDay($latitude, $longitude) {
     }
 }
 
-// Check if latitude and longitude are provided as GET parameters
-if (isset($_GET['lat']) && isset($_GET['long'])) {
-    $latitude = $_GET['lat'];
-    $longitude = $_GET['long'];
+// Check if the ZIP code is provided as a GET parameter
+if (isset($_GET['zipcode'])) {
+    $zipcode = $_GET['zipcode'];
     
-    // Validate latitude and longitude
-    if (is_numeric($latitude) && is_numeric($longitude)) {
+    // Validate the ZIP code (must be numeric and 5 digits)
+    if (is_numeric($zipcode) && strlen($zipcode) === 5) {
         // Call the function to get the flavor of the day
-        getFlavorOfTheDay($latitude, $longitude);
+        getFlavorOfTheDay($zipcode);
     } else {
-        echo "Invalid latitude or longitude values.";
+        echo "Invalid ZIP code.";
     }
 } else {
-    // Print an error message if latitude and longitude are not provided
-    echo "Latitude and longitude parameters are required.";
+    // Print an error message if the ZIP code is not provided
+    echo "ZIP code parameter is required.";
 }
 ?>
