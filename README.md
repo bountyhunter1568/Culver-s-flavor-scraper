@@ -9,10 +9,11 @@ This PHP project fetches the "Flavor of the Day" from Culver's using a given ZIP
 
 ## Usage
 
-There are two PHP scripts in this project:
+There three PHP scripts in this project:
 
 1. **Basic Flavor Fetcher**: This script fetches and displays only the "Flavor of the Day" name based on a given ZIP code.
 2. **Extended Flavor Fetcher with Image**: This script fetches both the "Flavor of the Day" name and an associated image.
+3. **The Better Version**: This is the final version flushed out way more
 
 ### 1. Basic Flavor Fetcher
 
